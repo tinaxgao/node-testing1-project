@@ -2,9 +2,9 @@
  * [Exercise 1] trimProperties copies an object trimming its properties
  */
 function trimProperties(obj) {
-  let newObj = obj;
-  Object.keys(newObj).forEach((k) => {
-    newObj[k] = newObj[k].trim();
+  let newObj = {};
+  Object.keys(obj).forEach((k) => {
+    newObj[k] = obj[k].trim();
   });
   return newObj;
 

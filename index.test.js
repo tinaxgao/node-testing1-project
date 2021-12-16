@@ -9,11 +9,11 @@ describe('[Exercise 1] trimProperties', () => {
     expect(actual).toEqual(expected)
   })
 
-//   test('[2] returns a copy, leaving the original object intact', () => {
-//     const input = { foo: '  foo ', bar: 'bar ', baz: ' baz' }
-//     const actual = utils.trimProperties(input)
-//     expect(actual).not.toBe(input)
-//   })
+  test('[2] returns a copy, leaving the original object intact', () => {
+    const input = { foo: '  foo ', bar: 'bar ', baz: ' baz' }
+    utils.trimProperties(input)
+    expect(input).toEqual({ foo: '  foo ', bar: 'bar ', baz: ' baz' })
+  })
 })
 
 describe('[Exercise 2] trimPropertiesMutation', () => {
@@ -23,12 +23,12 @@ describe('[Exercise 2] trimPropertiesMutation', () => {
     const actual = utils.trimPropertiesMutation(input)
     expect(actual).toEqual(expected)
   })
-  // test('[4] the object returned is the exact same one we passed in', () => {test('[2] returns a copy, leaving the original object intact', () => {
-  //   const input = { foo: '  foo ', bar: 'bar ', baz: ' baz' }
-  //   const expected = { foo: 'foo', bar: 'bar', baz: 'baz' }
-  //   const actual = utils.trimPropertiesMutation(input)
-  //   expect(actual).toBe(input)
-  // })})
+
+  test('[4] the object returned is the exact same one we passed in', () => {
+    const input = { foo: '  foo ', bar: 'bar ', baz: ' baz' }
+     utils.trimPropertiesMutation(input)
+    expect(input).toEqual({ foo: 'foo', bar: 'bar', baz: 'baz' })
+  })
 })
 
 describe('[Exercise 3] findLargestInteger', () => {
