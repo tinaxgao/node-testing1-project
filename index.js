@@ -1,10 +1,5 @@
 /**
  * [Exercise 1] trimProperties copies an object trimming its properties
- * @param {object} obj - an object with properties that are strings
- * @returns {object} - a copy of the object with strings trimmed
- *
- * EXAMPLE
- * trimProperties({ name: '  jane  ' }) // returns a new object { name: 'jane' }
  */
 function trimProperties(obj) {
   let newObj = obj;
@@ -22,11 +17,6 @@ function trimProperties(obj) {
 
 /**
  * [Exercise 2] trimPropertiesMutation trims in place the properties of an object
- * @param {object} obj - an object with properties that are strings
- * @returns {object} - the same object with strings trimmed
- *
- * EXAMPLE
- * trimPropertiesMutation({ name: '  jane  ' }) // returns the object mutated in place { name: 'jane' }
  */
 function trimPropertiesMutation(obj) {
   Object.keys(obj).forEach((k) => {
@@ -37,11 +27,6 @@ function trimPropertiesMutation(obj) {
 
 /**
  * [Exercise 3] findLargestInteger finds the largest integer in an array of objects { integer: 1 }
- * @param {object[]} integers - an array of objects
- * @returns {number} - the largest integer
- *
- * EXAMPLE
- * findLargestInteger([{ integer: 1 }, { integer: 3 }, { integer: 2 }]) // returns 3
  */
 function findLargestInteger(integers) {
   const objKey = Object.keys(integers[0]);
@@ -49,17 +34,13 @@ function findLargestInteger(integers) {
   return Math.max.apply(null, values);
 }
 
-console.log(
-  findLargestInteger([{ integer: 1 }, { integer: 3 }, { integer: 2 }])
-);
-
 class Counter {
   /**
    * [Exercise 4A] Counter creates a counter
    * @param {number} initialNumber - the initial state of the count
    */
   constructor(initialNumber) {
-    // ✨ initialize whatever properties are needed
+    this.count = initialNumber + 1;
   }
 
   /**
@@ -75,9 +56,19 @@ class Counter {
    * counter.countDown() // returns 0
    */
   countDown() {
-    // ✨ implement
+    if (this.count > 0) {
+      this.count--;
+    }
+    return this.count;
   }
 }
+
+let counter = new Counter(3);
+console.log(counter.countDown());
+console.log(counter.countDown());
+console.log(counter.countDown());
+console.log(counter.countDown());
+console.log(counter.countDown());
 
 class Seasons {
   /**
