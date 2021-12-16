@@ -63,19 +63,12 @@ class Counter {
   }
 }
 
-let counter = new Counter(3);
-console.log(counter.countDown());
-console.log(counter.countDown());
-console.log(counter.countDown());
-console.log(counter.countDown());
-console.log(counter.countDown());
-
 class Seasons {
   /**
    * [Exercise 5A] Seasons creates a seasons object
    */
   constructor() {
-    // ✨ initialize whatever properties are needed
+    this.season = "spring";
   }
 
   /**
@@ -91,9 +84,28 @@ class Seasons {
    * seasons.next() // returns "summer"
    */
   next() {
-    // ✨ implement
+    if (this.season === "spring") {
+      return (this.season = "summer");
+    }
+    if (this.season === "summer") {
+      return (this.season = "fall");
+    }
+
+    if (this.season === "fall") {
+      return (this.season = "winter");
+    }
+    if (this.season === "winter") {
+      return (this.season = "spring");
+    }
   }
 }
+
+let seasons = new Seasons();
+console.log(seasons.next());
+console.log(seasons.next());
+console.log(seasons.next());
+console.log(seasons.next());
+console.log(seasons.next());
 
 class Car {
   /**
