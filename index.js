@@ -118,7 +118,7 @@ class Car {
     this.odometer = 0; // car initilizes with zero miles
     this.tank = tankSize; // car initiazes full of gas
     this.name = name;
-    this.mpg = mpg// ✨ initialize whatever other properties are needed
+    this.mpg = mpg; // ✨ initialize whatever other properties are needed
   }
 
   /**
@@ -136,7 +136,7 @@ class Car {
    */
   drive(distance) {
     // const maxMiles = this.tank * this.mpg
-    this.odometer = this.odometer + distance
+    this.odometer = this.odometer + distance;
     // maxMiles - distance = milesLeft
   }
 
@@ -169,9 +169,17 @@ class Car {
  *    // result is false
  * })
  */
-function isEvenNumberAsync(number) {
-  // ✨ implement
+async function isEvenNumberAsync(number) {
+  const remainder = number % 2;
+
+  if (remainder === 0) {
+    return true;
+  } else {
+    return false;
+  }
 }
+
+console.log(isEvenNumberAsync(4));
 
 module.exports = {
   trimProperties,
