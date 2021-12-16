@@ -55,10 +55,9 @@ describe('[Exercise 4] Counter', () => {
 
   test('[7] the SECOND CALL of counter.countDown returns the initial count minus one', () => {
     const actual = counter.countDown()
-    const expected = 3
-    const expected2 = 2
-    expect(actual).toBe(expected)
-    expect(actual).toBe(expected2)
+    
+    expect(actual).toBeCalledTimes(2);
+    expect(actual).toEqual(2)
   })
 
   // test('[8] the count eventually reaches zero but does not go below zero', () => {})
