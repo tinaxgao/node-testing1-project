@@ -139,24 +139,19 @@ class Car {
 
 /**
  * [Exercise 7] Asynchronously resolves whether a number is even
- * @param {number} number - the number to test for evenness
- * @returns {promise} - resolves true if number even, false otherwise
- *
- * EXAMPLE
- * isEvenNumberAsync(2).then(result => {
- *    // result is true
- * })
- * isEvenNumberAsync(3).then(result => {
- *    // result is false
- * })
  */
-function isEvenNumberAsync(number) {
-   if (number % 2 === 0) {
-    return Promise.resolve(true);
-  } else {
-    return Promise.resolve(false);
-  }
+async function isEvenNumberAsync(number) {
+   return number % 2 === 0 || false
 }
+
+//ALTERNATIVE
+// function isEvenNumberAsync(number) {
+//   if (number % 2 === 0) {
+//    return Promise.resolve(true);
+//  } else {
+//    return Promise.resolve(false);
+//  }
+// }
 
 module.exports = {
   trimProperties,
