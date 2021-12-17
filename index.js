@@ -110,16 +110,6 @@ class Car {
 
   /**
    * [Exercise 6B] Car.prototype.drive adds miles to the odometer and consumes fuel according to mpg
-   * @param {string} distance - the distance we want the car to drive
-   * @returns {number} - the updated odometer value
-   *
-   * EXAMPLE
-   * const focus = new Car('focus', 20, 30)
-   * focus.drive(100) // returns 100
-   * focus.drive(100) // returns 200
-   * focus.drive(100) // returns 300
-   * focus.drive(200) // returns 500
-   * focus.drive(200) // returns 600 (ran out of gas after 100 miles)
    */
   drive(distance) {
     const maxMiles = this.tank * this.mpg;
@@ -135,18 +125,10 @@ class Car {
 
   /**
    * [Exercise 6C] Adds gallons to the tank
-   * @param {number} gallons - the gallons of fuel we want to put in the tank
-   * @returns {number} - the miles that can be driven after refueling
-   *
-   * EXAMPLE
-   * const focus = new Car('focus', 20, 30)
-   * focus.drive(600) // returns 600
-   * focus.drive(1) // returns 600 (no distance driven as tank is empty)
-   * focus.refuel(99) // returns 600 (tank only holds 20)
    */
   refuel(gallons) {
     let fillableGals = this.tankSize - this.tank;
-    if (gallons < fillableGals) {
+    if (gallons <= fillableGals) {
       this.tank = this.tank + gallons;
     } else {
       this.tank = this.tank + fillableGals;
@@ -154,13 +136,6 @@ class Car {
     return this.tank * this.mpg;
   }
 }
-
-const focus = new Car("focus", 20, 30);
-console.log("drive 1", focus.drive(250));
-console.log("drive 2", focus.drive(750));
-console.log("drive 2", focus.drive(750));
-console.log("refuel 1", focus.refuel(50));
-console.log("drive 2", focus.drive(750));
 
 /**
  * [Exercise 7] Asynchronously resolves whether a number is even
@@ -175,18 +150,13 @@ console.log("drive 2", focus.drive(750));
  *    // result is false
  * })
  */
-async function isEvenNumberAsync(number) {
-  const remainder = number % 2;
-
-  if (remainder === 0) {
-    return true;
+function isEvenNumberAsync(number) {
+   if (number % 2 === 0) {
+    return Promise.resolve(true);
   } else {
-    return false;
+    return Promise.resolve(false);
   }
 }
-
-// console.log(isEvenNumberAsync(4));
-// console.log(isEvenNumberAsync(15));
 
 module.exports = {
   trimProperties,
