@@ -44,16 +44,7 @@ class Counter {
   }
 
   /**
-   * [Exercise 4B] Counter.prototype.countDown counts down to zero
-   * @returns {number} - the next count, does not go below zero
-   *
-   * EXAMPLE
-   * const counter = new Counter(3)
-   * counter.countDown() // returns 3
-   * counter.countDown() // returns 2
-   * counter.countDown() // returns 1
-   * counter.countDown() // returns 0
-   * counter.countDown() // returns 0
+   * [Exercise 4B] Counter.prototype.countDown
    */
   countDown() {
     if (this.count > 0) {
@@ -69,19 +60,14 @@ class Seasons {
    */
   constructor() {
     this.season = "spring";
+
+    // ALTERNATIVE
+    // this.seasons=["summer", "fall", "winter", "spring"]
+    // this.currentSeason = 0
   }
 
   /**
    * [Exercise 5B] Seasons.prototype.next returns the next season
-   * @returns {string} - the next season starting with "summer"
-   *
-   * EXAMPLE
-   * const seasons = new Seasons()
-   * seasons.next() // returns "summer"
-   * seasons.next() // returns "fall"
-   * seasons.next() // returns "winter"
-   * seasons.next() // returns "spring"
-   * seasons.next() // returns "summer"
    */
   next() {
     if (this.season === "spring") {
@@ -97,15 +83,15 @@ class Seasons {
     if (this.season === "winter") {
       return (this.season = "spring");
     }
+
+    //ALTERNATIVE
+    // const result = this.seasons[this.currentSeason]
+    // if (this.currentSeason === 3) {
+    //   this.currentSeason = 0
+    // } else { ++ this.currentSeason}
+    // return result
   }
 }
-
-let seasons = new Seasons();
-console.log(seasons.next());
-console.log(seasons.next());
-console.log(seasons.next());
-console.log(seasons.next());
-console.log(seasons.next());
 
 class Car {
   /**
@@ -117,6 +103,7 @@ class Car {
   constructor(name, tankSize, mpg) {
     this.odometer = 0; // car initilizes with zero miles
     this.tank = tankSize; // car initiazes full of gas
+    this.tankSize = tankSize;
     this.name = name;
     this.mpg = mpg; // ✨ initialize whatever other properties are needed
   }
@@ -135,9 +122,15 @@ class Car {
    * focus.drive(200) // returns 600 (ran out of gas after 100 miles)
    */
   drive(distance) {
-    // const maxMiles = this.tank * this.mpg
-    this.odometer = this.odometer + distance;
-    // maxMiles - distance = milesLeft
+    const maxMiles = this.tank * this.mpg;
+    if (distance <= maxMiles) {
+      this.odometer = this.odometer + distance;
+      this.tank = this.tank - distance / this.mpg;
+    } else {
+      this.odometer = this.odometer + maxMiles;
+      this.tank = this.tank - maxMiles / this.mpg;
+    }
+    return this.odometer;
   }
 
   /**
@@ -152,9 +145,22 @@ class Car {
    * focus.refuel(99) // returns 600 (tank only holds 20)
    */
   refuel(gallons) {
-    // ✨ implement
+    let fillableGals = this.tankSize - this.tank;
+    if (gallons < fillableGals) {
+      this.tank = this.tank + gallons;
+    } else {
+      this.tank = this.tank + fillableGals;
+    }
+    return this.tank * this.mpg;
   }
 }
+
+const focus = new Car("focus", 20, 30);
+console.log("drive 1", focus.drive(250));
+console.log("drive 2", focus.drive(750));
+console.log("drive 2", focus.drive(750));
+console.log("refuel 1", focus.refuel(50));
+console.log("drive 2", focus.drive(750));
 
 /**
  * [Exercise 7] Asynchronously resolves whether a number is even
@@ -179,7 +185,8 @@ async function isEvenNumberAsync(number) {
   }
 }
 
-console.log(isEvenNumberAsync(4));
+// console.log(isEvenNumberAsync(4));
+// console.log(isEvenNumberAsync(15));
 
 module.exports = {
   trimProperties,
